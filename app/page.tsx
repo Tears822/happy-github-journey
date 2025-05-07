@@ -1,11 +1,11 @@
 
 import Image from "next/image"
-import RatingSystem from "@/components/rating-system"
-import ReviewGallery from "@/components/review-gallery"
-import WelcomePopup from "@/components/welcome-popup"
-import ChiroProHeader from "@/components/chiropro-header"
-import ChiroProFooter from "@/components/chiropro-footer"
-import { Button } from "@/components/ui/button"
+import RatingSystem from "../components/rating-system"
+import ReviewGallery from "../components/review-gallery"
+import WelcomePopup from "../components/welcome-popup"
+import ChiroProHeader from "../components/chiropro-header"
+import ChiroProFooter from "../components/chiropro-footer"
+import { Button } from "../components/ui/button"
 import { MapPin } from "lucide-react"
 
 export default function Home() {
