@@ -1,6 +1,6 @@
 
 import Image from "next/image";
-import RatingSystem from "../components/rating-system.jsx"; 
+import RatingSystem from "../components/rating-system"; 
 import ReviewGallery from "../components/review-gallery";
 import WelcomePopup from "../components/welcome-popup";
 import ChiroProHeader from "../components/chiropro-header";
