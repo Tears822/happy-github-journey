@@ -1,58 +1,70 @@
+
 "use client"
 
 import { useState, useEffect } from "react"
-import { X } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import Link from "next/link"
+import Image from "next/image"
 
 export default function WelcomePopup() {
-  const [isOpen, setIsOpen] = useState(false)
+  const [showPopup, setShowPopup] = useState(false)
 
   useEffect(() => {
-    // Show popup after a short delay
-    const timer = setTimeout(() => {
-      setIsOpen(true)
-    }, 1500)
-
-    return () => clearTimeout(timer)
+    const hasSeenPopup = localStorage.getItem("hasSeenWelcomePopup")
+    
+    if (!hasSeenPopup) {
+      const timer = setTimeout(() => {
+        setShowPopup(true)
+      }, 2000)
+      
+      return () => clearTimeout(timer)
+    }
   }, [])
-
-  if (!isOpen) return null
-
+  
+  const handleClose = () => {
+    localStorage.setItem("hasSeenWelcomePopup", "true")
+    setShowPopup(false)
+  }
+  
+  if (!showPopup) return null
+  
   return (
-    <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4 animate-fade-in">
-      <div className="bg-white rounded-lg shadow-xl max-w-md w-full relative overflow-hidden animate-scale">
-        <div className="bg-primary p-4 text-white">
-          <button
-            onClick={() => setIsOpen(false)}
-            className="absolute top-3 right-3 text-white hover:text-gray-200 transition-colors"
-            aria-label="Close popup"
-          >
-            <X size={20} />
-          </button>
-          <h3 className="text-xl font-bold">Welcome!</h3>
-        </div>
-
-        <div className="p-6">
-          <div className="mb-4 animate-slide-up" style={{ animationDelay: "0.1s" }}>
-            <p className="text-lg font-medium mb-2">Hey Eric and Tyler,</p>
-            <p className="text-neutral-dark">
-              Mark & Michael here with The Lab. Click the button below to see the admin page and how our review journey
-              will work for PURE Health.
-            </p>
-          </div>
-
-          <div className="flex justify-center mt-6 animate-slide-up" style={{ animationDelay: "0.2s" }}>
-            <Link href="/admin">
-              <Button className="animate-pulse" variant="primary">
-                View Admin Dashboard
-              </Button>
-            </Link>
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm animate-fade-in">
+      <div className="relative max-w-md w-full mx-4 bg-white rounded-2xl shadow-xl p-8 animate-scale">
+        <button 
+          onClick={handleClose}
+          className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 transition-colors"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18" />
+            <line x1="6" y1="6" x2="18" y2="18" />
+          </svg>
+          <span className="sr-only">Close</span>
+        </button>
+        
+        <div className="flex justify-center mb-4">
+          <div className="w-20 h-20 bg-primary-light rounded-full flex items-center justify-center">
+            <Image 
+              src="/images/chiropro-logo.png" 
+              alt="ChiroPro Wellness Logo" 
+              width={60} 
+              height={60}
+              className="object-contain"
+            />
           </div>
         </div>
-
-        <div className="bg-gray-50 p-4 text-center text-sm text-neutral-light">
-          <p>This popup only appears in the demo version</p>
+        
+        <h2 className="text-2xl font-serif font-bold text-center mb-2 text-black">Welcome to ChiroPro Wellness</h2>
+        <p className="text-neutral-dark text-center mb-6">
+          Experience elite chiropractic care designed for your total well-being. We're thrilled to have you here.
+        </p>
+        
+        <div className="flex flex-col space-y-3">
+          <Button onClick={handleClose} className="w-full">
+            Explore Our Services
+          </Button>
+          <Button variant="outline" onClick={handleClose} className="w-full">
+            Maybe Later
+          </Button>
         </div>
       </div>
     </div>
