@@ -1,0 +1,21 @@
+{
+  "name": "PURE Health Reviews",
+  "short_name": "PURE Reviews",
+  "description": "Share your experience with PURE Health",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#4a90a7",
+  "icons": [
+    {
+      "src": "/images/pure-health-logo.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/images/pure-health-logo.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
