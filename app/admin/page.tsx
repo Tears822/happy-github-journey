@@ -1,3 +1,4 @@
+
 import AdminClientPage from "./AdminClientPage"
 
 export const metadata = {

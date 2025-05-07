@@ -18,4 +18,8 @@ export default defineConfig(({ mode }) => ({
       '@': path.resolve(__dirname, '.'),
     },
   },
+  // Make sure TypeScript options don't conflict
+  optimizeDeps: {
+    force: true
+  }
 }))
