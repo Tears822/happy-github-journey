@@ -10,19 +10,23 @@ export default function WelcomePopup() {
 
   useEffect(() => {
     // Only run on client side
-    const hasSeenPopup = localStorage.getItem("hasSeenWelcomePopup")
-    
-    if (!hasSeenPopup) {
-      const timer = setTimeout(() => {
-        setShowPopup(true)
-      }, 2000)
+    if (typeof window !== 'undefined') {
+      const hasSeenPopup = localStorage.getItem("hasSeenWelcomePopup")
       
-      return () => clearTimeout(timer)
+      if (!hasSeenPopup) {
+        const timer = setTimeout(() => {
+          setShowPopup(true)
+        }, 2000)
+        
+        return () => clearTimeout(timer)
+      }
     }
   }, [])
   
   const handleClose = () => {
-    localStorage.setItem("hasSeenWelcomePopup", "true")
+    if (typeof window !== 'undefined') {
+      localStorage.setItem("hasSeenWelcomePopup", "true")
+    }
     setShowPopup(false)
   }
   
