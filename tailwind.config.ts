@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss"
 
 const config: Config = {
@@ -10,15 +11,29 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        serif: ["Playfair Display", "serif"],
+        sans: ["Montserrat", "sans-serif"],
+      },
       colors: {
         primary: {
-          DEFAULT: "#4a90a7", // PURE Health blue
-          dark: "#3a7a8f",
-          light: "#6ba5b9",
+          DEFAULT: "#9b87f5", // ChiroPro main purple
+          dark: "#7E69AB",
+          light: "#D6BCFA",
+        },
+        gold: {
+          DEFAULT: "#D4AF37", // Primary gold
+          light: "#F7E9C0",
+          dark: "#A58A2A",
         },
         secondary: {
           DEFAULT: "#6c757d", // Gray for text
           light: "#f8f9fa",
+        },
+        neutral: {
+          DEFAULT: "#8E9196",
+          dark: "#222",
+          light: "#F1F0FB",
         },
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
@@ -66,6 +81,7 @@ const config: Config = {
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic": "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+        "hero-pattern": "linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.7)), url('/images/chiropro-bg.jpg')",
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -89,10 +105,18 @@ const config: Config = {
             height: "0",
           },
         },
+        "float": {
+          "0%, 100%": { transform: "translateY(0)" },
+          "50%": { transform: "translateY(-10px)" },
+        }
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        "float": "float 6s ease-in-out infinite",
+      },
+      boxShadow: {
+        'glass': '0 4px 30px rgba(0, 0, 0, 0.1)',
       },
     },
   },

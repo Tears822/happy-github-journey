@@ -1,99 +1,170 @@
+
 import Image from "next/image"
 import RatingSystem from "@/components/rating-system"
 import ReviewGallery from "@/components/review-gallery"
 import WelcomePopup from "@/components/welcome-popup"
+import ChiroProHeader from "@/components/chiropro-header"
+import ChiroProFooter from "@/components/chiropro-footer"
+import { Button } from "@/components/ui/button"
 import { MapPin } from "lucide-react"
 
 export default function Home() {
   return (
-    <main className="min-h-screen flex flex-col items-center">
+    <main className="min-h-screen flex flex-col items-center bg-white">
       {/* Welcome Popup */}
       <WelcomePopup />
 
+      {/* Header */}
+      <ChiroProHeader />
+
       {/* Hero Section */}
-      <div className="w-full bg-gray-100 py-12">
-        <div className="container mx-auto px-4 grid md:grid-cols-2 gap-8 items-center">
-          <div>
-            <div className="inline-block bg-primary text-white px-4 py-2 rounded-full text-sm font-medium mb-4">
-              Reviews made simple.
-            </div>
-            <h1 className="text-4xl md:text-5xl font-bold text-black mb-4 animate-slide-up">
-              Your feedback matters to us.
+      <section className="w-full py-20 bg-[url('/images/chiropro-bg.jpg')] bg-cover bg-center relative">
+        <div className="absolute inset-0 bg-white/80 backdrop-blur-[2px]"></div>
+        <div className="container mx-auto px-6 relative z-10">
+          <div className="max-w-3xl">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-black mb-4 animate-slide-up">
+              Elite Chiropractic Care <span className="text-primary">in the Heart of the City</span>
             </h1>
-            <p className="text-lg text-neutral-dark mb-6 animate-slide-up" style={{ animationDelay: "0.1s" }}>
-              Your opinion helps us improve our services. Please take a moment to rate your experience with PURE Health.
+            <p className="text-lg md:text-xl text-neutral-dark mb-8 animate-slide-up" style={{ animationDelay: "0.1s" }}>
+              Trusted by over 500 happy clients for personalized treatments and exceptional results
             </p>
-            <p className="text-xl font-semibold text-primary animate-fade-in" style={{ animationDelay: "0.2s" }}>
-              Please Share Your Experience
-            </p>
-          </div>
-          <div className="hidden md:flex justify-center items-center">
-            <Image
-              src="/images/pure-health-logo.png"
-              alt="PURE Health Logo"
-              width={250}
-              height={250}
-              className="object-contain"
-            />
+            <Button 
+              className="animate-fade-in text-lg py-6 px-10" 
+              style={{ animationDelay: "0.2s" }}
+              onClick={() => document.getElementById('rating-section')?.scrollIntoView({ behavior: 'smooth' })}
+            >
+              Leave Us a Review on Google
+            </Button>
           </div>
         </div>
-      </div>
+      </section>
 
       {/* Main Content */}
-      <div className="container mx-auto px-4 py-8 flex-1 flex flex-col items-center">
-        <div className="max-w-4xl w-full bg-white rounded-lg shadow-lg p-8 text-center border-t-4 border-primary card animate-fade-in">
-          <div className="flex items-center justify-center mb-4 text-black animate-slide-down">
-            <MapPin className="mr-2 text-primary" size={20} />
-            <p className="font-medium">8004 Quaker Ave Suite D, Lubbock, TX 79424</p>
+      <section id="rating-section" className="container mx-auto px-6 py-16 flex-1 flex flex-col items-center">
+        <div className="max-w-4xl w-full glass rounded-2xl p-10 text-center border-t-4 border-gold shadow-glass">
+          <div className="flex items-center justify-center mb-6 text-neutral-dark animate-slide-down">
+            <MapPin className="mr-2 text-gold" size={20} />
+            <p className="font-medium">890 Harbor View Blvd, San Diego, CA 92101</p>
           </div>
 
-          <h1 className="text-3xl font-bold text-black mb-2 animate-slide-up">How Was Your Experience?</h1>
-          <p className="text-lg text-neutral-dark mb-8 animate-slide-up" style={{ animationDelay: "0.1s" }}>
-            Your feedback helps us improve our services. Please take a moment to rate your experience.
+          <h2 className="text-3xl font-serif font-bold text-black mb-3 animate-slide-up">How Was Your Experience?</h2>
+          <p className="text-neutral-dark mb-8 animate-slide-up" style={{ animationDelay: "0.1s" }}>
+            Your feedback helps us provide better care. Please take a moment to rate your experience with ChiroPro Wellness.
           </p>
 
           <div className="animate-fade-in" style={{ animationDelay: "0.2s" }}>
             <RatingSystem />
           </div>
+        </div>
+      </section>
 
-          <div className="animate-fade-in" style={{ animationDelay: "0.3s" }}>
-            <ReviewGallery />
-          </div>
+      {/* Reviews Section */}
+      <section className="container mx-auto px-6 py-16">
+        <div className="animate-fade-in">
+          <ReviewGallery />
+        </div>
+      </section>
 
-          <div className="mt-10 text-neutral-light text-sm animate-fade-in" style={{ animationDelay: "0.4s" }}>
-            <p>Thank you for choosing PURE Health.</p>
-            <p>Your feedback helps us provide better healthcare services to our community.</p>
+      {/* About Section */}
+      <section id="about" className="w-full py-20 bg-neutral-light">
+        <div className="container mx-auto px-6">
+          <div className="grid md:grid-cols-2 gap-10 items-center">
+            <div className="animate-fade-in">
+              <h2 className="text-3xl font-serif font-bold text-black mb-6">About ChiroPro Wellness</h2>
+              <div className="h-1 w-24 bg-gold mb-6"></div>
+              <p className="text-neutral-dark mb-6 leading-relaxed">
+                ChiroPro Wellness offers personalized chiropractic care focused on long-term relief, posture alignment, and holistic well-being. Located in downtown San Diego, our team of experts is committed to helping you achieve optimal health through innovative techniques and compassionate care.
+              </p>
+              <p className="text-neutral-dark mb-6 leading-relaxed">
+                Our state-of-the-art facility combines luxury comfort with cutting-edge technology to provide you with the best possible experience. We believe that true wellness comes from addressing the root causes of discomfort, not just treating symptoms.
+              </p>
+              <div className="mt-8">
+                <Button>Book a Consultation</Button>
+              </div>
+            </div>
+            
+            <div className="relative h-80 md:h-96 rounded-2xl overflow-hidden shadow-glass animate-float">
+              <Image
+                src="/images/chiropro-team.jpg" 
+                alt="ChiroPro Wellness Team"
+                fill
+                className="object-cover"
+              />
+            </div>
           </div>
         </div>
-      </div>
-
-      {/* Footer */}
-      <footer className="w-full py-8 bg-[#2c3e50] text-white">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="space-y-4">
-              <h3 className="font-bold text-lg mb-4">HOURS</h3>
-              <ul className="space-y-2">
-                <li className="flex justify-between border-b border-gray-700 pb-2">
-                  <span>MON-FRI:</span>
-                  <span>9am - 6pm</span>
-                </li>
-                <li className="flex justify-between border-b border-gray-700 pb-2">
-                  <span>SAT:</span>
-                  <span>10am - 5:30pm</span>
-                </li>
-                <li className="flex justify-between border-b border-gray-700 pb-2">
-                  <span>SUN:</span>
-                  <span>1pm - 5pm</span>
-                </li>
-              </ul>
-            </div>
-
-            <div>
-              <h3 className="font-bold text-lg mb-4">DIRECTIONS</h3>
-              <div className="h-48 bg-gray-200 rounded-md overflow-hidden">
+      </section>
+      
+      {/* Contact Section */}
+      <section id="contact" className="container mx-auto px-6 py-20">
+        <div className="max-w-4xl mx-auto text-center mb-16">
+          <h2 className="text-3xl font-serif font-bold text-black mb-3">Contact Us</h2>
+          <div className="h-px w-24 bg-gold mx-auto mb-6"></div>
+          <p className="text-neutral-dark">
+            Have questions or ready to start your wellness journey? Reach out to our team today.
+          </p>
+        </div>
+        
+        <div className="grid md:grid-cols-2 gap-10">
+          <div className="bg-white rounded-2xl p-8 glass shadow-glass">
+            <h3 className="text-2xl font-serif font-bold text-black mb-6">Get In Touch</h3>
+            <form className="space-y-6">
+              <div>
+                <label htmlFor="name" className="block text-sm font-medium text-neutral-dark mb-1">Full Name</label>
+                <input 
+                  type="text" 
+                  id="name" 
+                  className="w-full px-4 py-3 rounded-lg border border-neutral-light/50 focus:ring-2 focus:ring-gold/30 focus:border-gold transition-colors"
+                  placeholder="Your name" 
+                />
+              </div>
+              
+              <div>
+                <label htmlFor="email" className="block text-sm font-medium text-neutral-dark mb-1">Email Address</label>
+                <input 
+                  type="email" 
+                  id="email" 
+                  className="w-full px-4 py-3 rounded-lg border border-neutral-light/50 focus:ring-2 focus:ring-gold/30 focus:border-gold transition-colors"
+                  placeholder="your@email.com" 
+                />
+              </div>
+              
+              <div>
+                <label htmlFor="message" className="block text-sm font-medium text-neutral-dark mb-1">Message</label>
+                <textarea 
+                  id="message" 
+                  rows={4} 
+                  className="w-full px-4 py-3 rounded-lg border border-neutral-light/50 focus:ring-2 focus:ring-gold/30 focus:border-gold transition-colors"
+                  placeholder="How can we help you?" 
+                ></textarea>
+              </div>
+              
+              <Button className="w-full py-6">Send Message</Button>
+            </form>
+          </div>
+          
+          <div className="bg-white rounded-2xl p-8 glass shadow-glass">
+            <h3 className="text-2xl font-serif font-bold text-black mb-6">Visit Our Clinic</h3>
+            
+            <div className="space-y-6">
+              <div>
+                <h4 className="font-medium text-gold mb-2">Address</h4>
+                <p className="text-neutral-dark">890 Harbor View Blvd<br />San Diego, CA 92101</p>
+              </div>
+              
+              <div>
+                <h4 className="font-medium text-gold mb-2">Contact</h4>
+                <p className="text-neutral-dark">Phone: (858) 555-0101<br />Email: info@chiropronow.com</p>
+              </div>
+              
+              <div>
+                <h4 className="font-medium text-gold mb-2">Hours</h4>
+                <p className="text-neutral-dark">Monday - Friday: 8am - 7pm<br />Saturday: 9am - 4pm<br />Sunday: Closed</p>
+              </div>
+              
+              <div className="h-40 rounded-lg overflow-hidden">
                 <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3323.8610456075236!2d-101.92382492422837!3d33.58055997334306!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x86fe6d8f8d9530d1%3A0x5f3e41dc6d0a3c85!2s8004%20Quaker%20Ave%20Suite%20D%2C%20Lubbock%2C%20TX%2079424!5e0!3m2!1sen!2sus!4v1714591066121!5m2!1sen!2sus"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3356.977383700754!2d-117.16444048469007!3d32.715585780989104!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80d95359645ae8af%3A0x6560e7b3c0a17ff2!2s890%20Harbor%20View%20Blvd%2C%20San%20Diego%2C%20CA%2092101!5e0!3m2!1sen!2sus!4v1651771201654!5m2!1sen!2sus"
                   width="100%"
                   height="100%"
                   style={{ border: 0 }}
@@ -103,34 +174,12 @@ export default function Home() {
                 ></iframe>
               </div>
             </div>
-
-            <div>
-              <h3 className="font-bold text-lg mb-4">PURE HEALTH</h3>
-              <ul className="space-y-2">
-                <li>8004 Quaker Ave Suite D</li>
-                <li>Lubbock, Texas 79424</li>
-                <li className="pt-4">
-                  <a href="tel:8062567873" className="text-primary-light hover:text-white transition-colors">
-                    806-256-PURE
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="mailto:support@pureivhealth.com"
-                    className="text-primary-light hover:text-white transition-colors"
-                  >
-                    support@pureivhealth.com
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
-
-          <div className="mt-8 pt-6 border-t border-gray-700 text-center text-sm text-gray-400">
-            <p>© {new Date().getFullYear()} PURE Health. All rights reserved.</p>
           </div>
         </div>
-      </footer>
+      </section>
+
+      {/* Footer */}
+      <ChiroProFooter />
     </main>
   )
 }

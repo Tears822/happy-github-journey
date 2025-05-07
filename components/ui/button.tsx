@@ -1,3 +1,4 @@
+
 import * as React from "react"
 import { Slot } from "@radix-ui/react-slot"
 import { cva, type VariantProps } from "class-variance-authority"
@@ -10,21 +11,21 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default:
-          "bg-[#4a90a7] text-white hover:bg-[#3a7a8f] hover:translate-y-[-2px] hover:shadow-md active:translate-y-0",
+          "bg-gold text-white hover:bg-gold-dark hover:translate-y-[-2px] hover:shadow-md active:translate-y-0",
         destructive: "bg-destructive text-destructive-foreground hover:bg-destructive/90",
-        outline: "border border-input bg-background hover:bg-accent hover:text-accent-foreground",
+        outline: "border border-gold bg-transparent text-gold hover:bg-gold/10 hover:text-gold",
         secondary:
-          "bg-[#6c757d] text-white hover:bg-[#5a6268] hover:translate-y-[-2px] hover:shadow-md active:translate-y-0",
-        ghost: "hover:bg-accent hover:text-accent-foreground",
-        link: "text-[#4a90a7] underline-offset-4 hover:underline",
+          "bg-neutral text-white hover:bg-neutral-dark hover:translate-y-[-2px] hover:shadow-md active:translate-y-0",
+        ghost: "hover:bg-gold/10 hover:text-gold",
+        link: "text-primary underline-offset-4 hover:underline",
         primary:
-          "bg-[#4a90a7] text-white hover:bg-[#3a7a8f] hover:translate-y-[-2px] hover:shadow-md active:translate-y-0",
+          "bg-primary text-white hover:bg-primary-dark hover:translate-y-[-2px] hover:shadow-md active:translate-y-0",
       },
       size: {
-        default: "h-10 px-4 py-2",
-        sm: "h-9 rounded-md px-3",
-        lg: "h-11 rounded-md px-8",
-        icon: "h-10 w-10",
+        default: "h-10 px-4 py-2 rounded-full",
+        sm: "h-9 rounded-full px-3",
+        lg: "h-11 rounded-full px-8",
+        icon: "h-10 w-10 rounded-full",
       },
     },
     defaultVariants: {
