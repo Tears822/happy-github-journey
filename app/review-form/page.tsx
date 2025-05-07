@@ -1,7 +1,7 @@
 
 import { MapPin } from "lucide-react"
-import ChiroProHeader from "@/components/chiropro-header"
-import ChiroProFooter from "@/components/chiropro-footer"
+import ChiroProHeader from "../../components/chiropro-header"
+import ChiroProFooter from "../../components/chiropro-footer"
 
 export const metadata = {
   title: "ChiroPro Wellness - Share Your Feedback",
